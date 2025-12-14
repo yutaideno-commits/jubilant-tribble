@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ワクワク！3Dすごろく</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&display=swap');
+    </style>
+    <!-- Import Three.js -->
+    <!-- Import Three.js -->
+    <!-- Import map removed for Vite build -->
+</head>
+
+<body>
+    <div id="ui-layer">
+        <div id="header">
+            <h1 id="game-title">✨ 2クラス合同！空のすごろく ✨</h1>
+
+            <div id="score-board">
+                <div class="score-card p1-bg">
+                    <span class="team-name">1くみ</span>
+                    <div class="seal-count">💮 <span id="p1-seals">0</span></div>
+                </div>
+
+                <div id="turn-display">
+                    いまのばん<br>
+                    <span id="current-player-name" class="p1">1くみ</span>
+                </div>
+
+                <div class="score-card p2-bg">
+                    <span class="team-name">2くみ</span>
+                    <div class="seal-count">💮 <span id="p2-seals">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="controls">
+            <div class="control-panel">
+                <p id="dice-instruction">さいころの かずを えらんでね！</p>
+                <div id="dice-input-container">
+                    <button class="dice-num-btn" data-value="1">1</button>
+                    <button class="dice-num-btn" data-value="2">2</button>
+                    <button class="dice-num-btn" data-value="3">3</button>
+                    <button class="dice-num-btn" data-value="4">4</button>
+                    <button class="dice-num-btn" data-value="5">5</button>
+                    <button class="dice-num-btn" data-value="6">6</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Overlay -->
+        <div id="mission-overlay" class="hidden">
+            <div class="mission-card">
+                <h2>🎯 チャレンジ！</h2>
+                <div id="mission-text">ここに おだい が でるよ</div>
+                <div id="timer">30</div>
+
+                <div id="timer">30</div>
+
+                <button id="mission-start-btn" class="start-btn">よーい、スタート！</button>
+
+                <div id="mission-action-buttons" class="mission-buttons hidden">
+                    <button id="mission-seal-btn" class="special-btn">シールゲット！💮</button>
+                    <button id="mission-skip-btn" class="secondary-btn">ざんねん...</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Win Overlay -->
+        <div id="win-overlay" class="hidden">
+            <div class="win-card">
+                <h1>🎊 ゴール！！ 🎊</h1>
+                <p><span id="winner-name">プレイヤー1</span> のかち！</p>
+                <button id="restart-btn">もういっかい</button>
+            </div>
+        </div>
+        <!-- Setup Overlay -->
+        <div id="setup-overlay">
+            <div class="setup-card">
+                <h1 id="setup-title">1くみ の キャラクターをえらんでね！</h1>
+                <div class="char-grid">
+                    <button class="char-btn" data-type="rabbit">🐰 うさぎ</button>
+                    <button class="char-btn" data-type="bear">🐻 くま</button>
+                    <button class="char-btn" data-type="frog">🐸 カエル</button>
+                    <button class="char-btn" data-type="cat">🐱 ねこ</button>
+                </div>
+
+                <div class="model-input-container">
+                    <p>オリジナル 3Dモデル (GLB / FBX / OBJ):</p>
+                    <div class="model-inputs">
+                        <label>1くみ: <input type="file" id="p1-model-input" accept=".glb,.gltf,.fbx,.obj"></label>
+                        <label>2くみ: <input type="file" id="p2-model-input" accept=".glb,.gltf,.fbx,.obj"></label>
+                    </div>
+                </div>
+
+                <div class="bg-input-container">
+                    <p>はいけい がぞう (ファイル):</p>
+                    <input type="file" id="bg-file-input" accept="image/*">
+
+                    <p style="margin-top: 20px;">BGM (おんがく):</p>
+                    <input type="file" id="bgm-file-input" accept="audio/*">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <canvas id="game-canvas"></canvas>
+
+    <script type="module" src="game.js?v=11"></script>
+</body>
+
+</html>
